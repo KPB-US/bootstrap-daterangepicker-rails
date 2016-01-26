@@ -47,6 +47,7 @@
         this.autoApply = false;
         this.singleDatePicker = false;
         this.showDropdowns = false;
+        this.showCalendar = true;
         this.showWeekNumbers = false;
         this.timePicker = false;
         this.timePicker24Hour = false;
@@ -225,6 +226,9 @@
         if (typeof options.showDropdowns === 'boolean')
             this.showDropdowns = options.showDropdowns;
 
+        if (typeof options.showCalendar === 'boolean')
+            this.showCalendar = options.showCalendar;
+
         if (typeof options.singleDatePicker === 'boolean') {
             this.singleDatePicker = options.singleDatePicker;
             if (this.singleDatePicker)
@@ -337,6 +341,10 @@
             this.startDate = this.startDate.startOf('day');
             this.endDate = this.endDate.endOf('day');
             this.container.find('.calendar-time').hide();
+        }
+
+        if (!this.showCalendar) {
+            this.container.find('.calendar-table').hide();
         }
 
         //can't be used together for now
